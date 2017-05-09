@@ -1,7 +1,7 @@
 FROM bf16574403/java
 
 ENV JAVA_HOME=/usr/java/default
-ENV KAFKA_MANAGER_VERSION=1.3.3.4
+ENV KAFKA_MANAGER_VERSION=1.3.3.6
 ENV KAFKA_MANAGER_URL=https://github.com/yahoo/kafka-manager/archive/${KAFKA_MANAGER_VERSION}.tar.gz
 
 RUN \

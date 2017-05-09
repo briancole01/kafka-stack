@@ -33,15 +33,42 @@ services:
       - "2890:2888"
       - "3890:3888"
 
-  kafka:
+  kafka1:
     image: bf16574403/kafka
-    container_name: kafka
+    container_name: kafka1
     depends_on:
       - zookeeper1
       - zookeeper2
       - zookeeper3
     environment:
       - ZOOKEEPER_SERVERS=zookeeper1:2181,zookeeper2:2182,zookeeper3:2183
+      - BROKER_ID=1
+    ports:
+      - "9092:9092"
+
+  kafka2:
+    image: bf16574403/kafka
+    container_name: kafka2
+    depends_on:
+      - zookeeper1
+      - zookeeper2
+      - zookeeper3
+    environment:
+      - ZOOKEEPER_SERVERS=zookeeper1:2181,zookeeper2:2182,zookeeper3:2183
+      - BROKER_ID=2
+    ports:
+      - "9092:9092"
+
+  kafka3:
+    image: bf16574403/kafka
+    container_name: kafka3
+    depends_on:
+      - zookeeper1
+      - zookeeper2
+      - zookeeper3
+    environment:
+      - ZOOKEEPER_SERVERS=zookeeper1:2181,zookeeper2:2182,zookeeper3:2183
+      - BROKER_ID=3
     ports:
       - "9092:9092"
 
@@ -52,7 +79,9 @@ services:
       - zookeeper1
       - zookeeper2
       - zookeeper3
-      - kafka
+      - kafka1
+      - kafka2
+      - kafka3
     environment:
       - ZK_HOSTS=zookeeper1:2181,zookeeper2:2182,zookeeper3:2183
     ports:

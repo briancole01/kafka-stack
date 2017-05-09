@@ -1,6 +1,6 @@
 FROM bf16574403/java
 
-ENV ZOOKEEPER_VERSION 3.4.9
+ENV ZOOKEEPER_VERSION 3.4.10
 ENV ZOOKEEPER_URL=http://apache.mirrors.ovh.net/ftp.apache.org/dist/zookeeper/zookeeper-${ZOOKEEPER_VERSION}/zookeeper-${ZOOKEEPER_VERSION}.tar.gz
 ENV ZOOKEEPER_ID=1
 ENV ZOOKEEPER_DATA_DIR=/data/zookeeper
