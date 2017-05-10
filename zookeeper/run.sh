@@ -17,8 +17,9 @@ autopurge.snapRetainCount=2
 autopurge.purgeInterval=1
 EOF
 
-if [[ -n "$ZOOKEEPER_SERVERS" ]]; then
-  printf '%s' "$ZOOKEEPER_SERVERS" | awk 'BEGIN { RS = "," }; { printf "server.%i=%s\n", NR, $0 }' >> /opt/zookeeper/conf/zoo.cfg
+if [[ -z "$ZOOKEEPER_ID" ]] ; then
+  export ZOOKEEPER_SERVERS=localhost:2888:3888
 fi
+printf '%s' "$ZOOKEEPER_SERVERS" | awk 'BEGIN { RS = "," }; { printf "server.%i=%s\n", NR, $0 }' >> /opt/zookeeper/conf/zoo.cfg
 
 exec /opt/zookeeper/bin/zkServer.sh start-foreground
